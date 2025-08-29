@@ -220,6 +220,7 @@ docker ps -a -q
 # to remove the CID 
 docker rm -f `docker ps -a -q`
 
+
 # docker gave random names while creating the conatiner. we want to give required name
 docker run -d -p 80:80 --name nginx nginx
 
