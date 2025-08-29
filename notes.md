@@ -249,7 +249,7 @@ FROM:
 ======
 FROM almalinux:9
 
-docker build -t from:v1 . ---> current docker has docker file
+docker build -t from:v1 . ---> current directory has docker file
 -t ---> tag  
 
 docker images
