@@ -336,12 +336,12 @@ docker images  --filter label=COURSE="devops"
 # how can you push the images to docker hub
 log into dockerhub:
 
-docker login -u lakshmi315
-
+docker login -u lakshmireddy77
+docker push URL/username/imagename:version
 docker push label
 
 it will give an error. for this we need to retag the lables
-docker tag label:v1 lakshmi315/label:v1
+docker tag label:v1 lakshmi315/label:v1 ---> 1st adding the tags then push
 docker push lakshmi315/label:v1
 
 EXPOSE:
