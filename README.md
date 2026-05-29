@@ -249,7 +249,7 @@ Dockerfile ---> a set of instructions to create customised images
 FROM:
 ======
 FROM almalinux:9
-
+from represents the base OS
 docker build -t from:v1 . ---> current directory has docker file
 -t ---> tag  
 
