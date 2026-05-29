@@ -269,8 +269,23 @@ docker build -t run:v1 .
 systemctl start nginx ---> It will run service files ---> etc/systemd/system/nginx.service
 it command will execute 
 CMD ["nginx", "-g", "daemon off";]
+cmd---> run this command when container starts
 
 -g ---> means set the configuration directories
+
+normall process
+----------------
+Start nginx
+↓
+Run in background (daemon mode)
+docker process
+--------------
+daemon off;
+↓
+Do NOT run in background
+↓
+Stay in foreground
+
 
 # what happen if i remove run:v1 in the file
 
