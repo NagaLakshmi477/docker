@@ -351,30 +351,30 @@ docker images  --filter label=COURSE="devops"
 # how can you push the images to docker hub
 log into dockerhub:
 
-docker login -u lakshmireddy77
+docker login -u lakshmi1092
 docker push URL/username/imagename:version
 docker push label
 
 it will give an error. for this we need to retag the lables
-docker tag label:v1 lakshmi315/label:v1 ---> 1st adding the tags then push
-docker push lakshmi315/label:v1
+docker tag label:v1 lakshmi1092/label:v1 ---> 1st adding the tags then push
+docker push lakshmi1092/label:v1
 
 EXPOSE:
 =======
 It can be used for users to see the which port is open. 
 This for doc purpose not for any funcxtionlity
-docker build -t lakshmi315/expose:v1 .
-docker inspect lakshmi315/expose:v1 ---> to check ports
-docker push lakshmi315/expose:v1
+docker build -t lakshmi1092/expose:v1 .
+docker inspect lakshmi1092/expose:v1 ---> to check ports
+docker push lakshmi1092/expose:v1
 --- her if we give run in the from command 1st it will check local so we can directly give
-lakshmi315/run:v1
-docker push lakshmi315/expose:v1 --- to push the image
+lakshmi1092/run:v1
+docker push lakshmi1092/expose:v1 --- to push the image
 
 ENV:
 =====
 this variables are accesable inside contaier
-docker build -t lakshmi315/env:v1 .
-docker run -d lakshmi315/env:v1
+docker build -t lakshmi1092/env:v1 .
+docker run -d lakshmi1092/env:v1
 docker ps -a
 It is exited beacause we haven't give any command to run
 here i cannot use daemon beacuse we are not installling nginx instead i will give 
