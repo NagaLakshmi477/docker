@@ -122,20 +122,29 @@ hardware (cpu,ram)--> OS ---> application
 
 - hardware means CPU, RAM, Motherboard
 * we installed OS on hardware
+VM
+----
+Hardware → Host OS → Hypervisor → Guest OS → Applications
 
-VM ----> hardware ---> Host OS ---> hypervisior ---> guest OS ---> applications
-* it blocks the resourc3 utilization
-* VM -- logically divides physical hardware into multiple servers
-* guest os means we can use windows,ubunut or any os
-* here we need to mange hypervisior
-* manage ---> hard
-* os take more memory
+• Hypervisor = software that creates and manages VMs.
+• VM logically divides physical hardware into multiple virtual servers.
+• Guest OS can be Ubuntu, Windows, RedHat, CentOS, etc.
+• Need to install, configure, and manage the hypervisor.
+• Hypervisor management can be difficult.
+• Each VM has its own OS, so it uses more CPU, RAM, and storage.
+• Resource consumption is higher compared to containers.
 
-vm physical server ---> hardware ---> host OS ---> containers
+Containers / Docker
+-------------------
+Physical Server → Hardware → Host OS → Docker Engine → Containers
 
-* It will give only what we want to run the application
+• Containers provide only what is required to run the application.
 * container/image ---> (bare min OS )+ system packages + application code and dependies
-* it takes very less size
+* Docker Engine is the software that creates and manages containers.
+* Containers run your applications.
+• Containers are lightweight and take very less storage and memory.
+• Containers share the Host OS kernel.
+• No separate Guest OS is required.
 * it cannot block the resource utilization
 
 ## VM                         Containers
@@ -175,7 +184,11 @@ AMI ---> OS + configuration(system packages + app runtime + app librairies )
 image ---> bare min os + system packages + app runtime + app librairies
 
 when you run AMI it is called server, server is running instance of AMI
+AMI → Launch/Run → EC2 Instance (Server)
+
 container is running instance of image (image ---> run ---> container)
+When you run an image, it creates a running container.
+Docker Image → Run → Container
 
 docker images
 -------------
@@ -258,13 +271,16 @@ docker pull alpine ---> It gives very base min os
 # configure the image and install dependies
 RUN:
 =====
-RUN commands
+* RUN is a instruction used to execute commands inside the image while building it.
+* It is mainly used to:
+    Install packages
+    Set up dependencies
+    Configure the environment
 
-RUN instruction configure the image like installing packages and doing some configurations
-RUN executes at the time of image building
+RUN executes at the time of image building, not when the container runs.
 we can have multiple run commands beacuse we will install lot of packages
 docker build -t run:v1 .
-
+Execution Time === During docker build
 # nginx run 
 systemctl start nginx ---> It will run service files ---> etc/systemd/system/nginx.service
 it command will execute 
@@ -308,10 +324,16 @@ then
 docker run -d cmd:v1
 docker ps
 but we cannot have multiple CMD commands. CMD should be only instrcution inside docker file
+If multiple CMD instructions are present, the last one overrides the previous ones.
+Execution Time = During docker run
 
 COPY:
 ======
-It will copy the local code into container 
+It will copy files and directories from the local machine into the Docker image.
+Copies files exactly as they are.
+Local Machine --> Docker Image --> Container
+The files are copied during image build, not during container creation.
+
 deamon off ---> run the deamon on background 
 docker build -t copy:v1 .
 docker ps
@@ -320,9 +342,10 @@ docker run -d -p 80:80 --name copy nginx
 
 ADD:
 ======
-COPY and ADD both copies the code from local to conatiner, but it has 2 advantages
-it can directly fetch the file from the internet 
-it can directly untar the files into conatiners
+COPY and ADD are used to add files and directories into a Docker image.
+ADD can do everything that COPY does, but it has two additional capabilities:
+1. It can fetch files directly from a URL.
+2. It can directly untar (extract) tar files into the Docker image.
 docker rm -f copy
 docker build -t add:v1 
 docker run -d -p 80:80 --name add add:v1 
