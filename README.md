@@ -450,13 +450,16 @@ ENV can be acessed build time and inside container also
 docker build -t arg:v1 . --progress=plain --no-cache --build-arg trainer=lakshmi
 arg instrcution variables can be overriden
 
-In an exceptional case ARG can bethe 1st instrcution to supply to base OS in from 
+In an exceptional case ARG can bethe 1st instrcution to supply version to base OS in FROM 
 you can't use that version after from instrcution
 # how we can acess args inside container
+ARG duration="200 hrs"
+ENV duration=$duration
 
 ONBUILD:
 ========
 while developing images you can put some conditions while others are using your images
+ONBUILD will run if any other persons using the my image
 docker build -t onbuild-test:v1 --progress=plain --no-cache .
 docker run -d -p 80:80 onbuild-test:v1
 <ip public ip> in browser
