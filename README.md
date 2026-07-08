@@ -209,7 +209,7 @@ docker create    ---> to create container
 docker ps -a ----> It will all containsers including all status 
 docker ps ---> running conatiner
 # start the container
-docker start <container_id>
+docker start <container_id> 
 docker ps 
 # to remove container
 docker rm -f <container_ID>
