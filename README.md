@@ -1,199 +1,226 @@
-
 # Docker
 
-Java/j2EE
-1.5,1.6,1.7
+Java/j2EE  
+1.5,1.6,1.7  
 
-ear ---> Enterprize archive
-war ---> web archive
-jar ---> java archive
+ear ---> Enterprize archive  
+war ---> web archive  
+jar ---> java archive  
 
-.ear ---> it is the combination of (frontend+backend) ---> catalogue+cart+shipping+user+payment
-It can use only 1 db ---Oracle DB
-.ear ---> multiple wars file + jar(dependies/libraries)
+.ear ---> it is the combination of (frontend+backend) ---> catalogue+cart+shipping+user+payment  
+It can use only 1 db ---Oracle DB  
+.ear ---> multiple wars file + jar(dependies/libraries)  
 
-webspahere, weblogic,JBOSS ----> Application servers
+webspahere, weblogic,JBOSS ----> Application servers  
 
-servlet(base for any web frame woorks)+ JSP (java server pages)
-100 mb ---> 120 mb
+servlet(base for any web frame woorks)+ JSP (java server pages)  
+100 mb ---> 120 mb  
+
+---
 
 ## release process
-new features
-defects
 
-Business analyst(client side) + business analyst + developers + testing team + le support + l1 support + managers + leads + architect + build 
- realse manager  ----> co ordinate with all team members and make sure the realse is going as per the plan and continously update the client
+new features  
+defects  
 
-  
-  9-6 PM downtime
-  application servers stopped
-  build new application
-  remove old ear 
-  place new ear
-  check the modules and versions
-  restart the server
+Business analyst(client side) + business analyst + developers + testing team + le support + l1 support + managers + leads + architect + build  
+realse manager ----> co ordinate with all team members and make sure the realse is going as per the plan and continously update the client  
 
-  if major defects
+9-6 PM downtime  
+application servers stopped  
+build new application  
+remove old ear  
+place new ear  
+check the modules and versions  
+restart the server  
 
-  slow, no response .... 
-  restart 
+if major defects  
 
-  2.30 application was slow, no response 
-  send the logs to developers 
-  if the issue was not able to replicate
+slow, no response ....  
+restart  
 
-  Bridge --> Clients + L2 support + L1 support + Service Desk + Networking team + Linux team + DB team + testing team
+2.30 application was slow, no response  
+send the logs to developers  
+if the issue was not able to replicate  
 
-jQuery and angularJs
+Bridge --> Clients + L2 support + L1 support + Service Desk + Networking team + Linux team + DB team + testing team  
 
-here backend and frontend are separated
-frontend ----> backend
-API ---> rest API
+jQuery and angularJs  
 
-war file ---> wildfly, jboss
-it contain  only backend
- catalogue+cart+shipping+user+payment ---> if any component is not working or slow they will backend side = entre application we need to check here
+here backend and frontend are separated  
+frontend ----> backend  
+API ---> rest API  
 
- ## micro services
-catalogue
-cart
-shipping
-user
-payment
+war file ---> wildfly, jboss  
+it contain only backend  
 
-* here all components are separted , if one component is not work remaning components are working
-* every component can develop in diffrent programming lanaguge
-* loose copuling, less dependency
+catalogue+cart+shipping+user+payment ---> if any component is not working or slow they will backend side = entre application we need to check here  
+
+---
+
+## Microservices Architecture
+
+In a microservices architecture, an application is divided into multiple independent components (services), such as:
+
+* Catalogue
+* Cart
+* Shipping
+* User
+* Payment
+
+### Key Characteristics
+
+* All components are separated and operate independently. If one component fails, the remaining components continue to function without interruption.
+* Each component can be developed using different programming languages and technologies.
+* The architecture follows **loose coupling**, meaning services have minimal dependencies on each other.
+* This results in greater flexibility, scalability, and ease of maintenance.
+
+---
 
 # real time example
 
 ## Joint Families vs Small Families vs Individuals
 
-15-20 members --> .ear file --> Physical Server --> Dedicated Host
-Big House
+15-20 members --> .ear file --> Physical Server --> Dedicated Host  
+Big House  
 
 **Landed House**
 
+### advantages
 
-**advantages**
+Privacy  
 
-Privacy
+### Disadvantages
 
-## Disadvantages
+Costly  
+More time to construct  
+Maintanace --> Electricity, Water, Security etc.  
 
-Costly
-More time to construct
-Maintanace --> Electricity, Water, Security etc.
+---
 
 ## Small Families
 
-4 members  --> VM --> Shared
-small flat --> 1bhk or 2bhk
+4 members --> VM --> Shared  
+small flat --> 1bhk or 2bhk  
 
-**advantages**
+### advantages
 
-less cost
-less time to construct
-no maintanance
+less cost  
+less time to construct  
+no maintanance  
 
-**disadvantages**
+### disadvantages
 
-privacy
+privacy  
 
-Individuals --> Microservices
+---
 
-hostels, pgs --> Containers
+Individuals --> Microservices  
 
-**advantages**
+hostels, pgs --> Containers  
 
-least cost
-less time
-no maintanance
+### advantages
 
-**disadvantages**
+least cost  
+less time  
+no maintanance  
 
-0 privacy
+### disadvantages
+
+0 privacy  
+
+---
 
 ## diagram
 
-physical server:
+### physical server
 
-hardware (cpu,ram)--> OS ---> application
+hardware (cpu,ram)--> OS ---> application  
 
-- hardware means CPU, RAM, Motherboard
-* we installed OS on hardware
-VM
-----
-Hardware → Host OS → Hypervisor → Guest OS → Applications
+- hardware means CPU, RAM, Motherboard  
+* we installed OS on hardware  
 
-• Hypervisor = software that creates and manages VMs.
-• VM logically divides physical hardware into multiple virtual servers.
-• Guest OS can be Ubuntu, Windows, RedHat, CentOS, etc.
-• Need to install, configure, and manage the hypervisor.
-• Hypervisor management can be difficult.
-• Each VM has its own OS, so it uses more CPU, RAM, and storage.
-• Resource consumption is higher compared to containers.
+---
 
-Containers / Docker
--------------------
-Physical Server → Hardware → Host OS → Docker Engine → Containers
+## VM
 
-• Containers provide only what is required to run the application.
-* container/image ---> (bare min OS )+ system packages + application code and dependies
-* Docker Engine is the software that creates and manages containers.
-* Containers run your applications.
-• Containers are lightweight and take very less storage and memory.
-• Containers share the Host OS kernel.
-• No separate Guest OS is required.
-* it cannot block the resource utilization
+Hardware → Host OS → Hypervisor → Guest OS → Applications  
 
-## VM                         Containers
-=======                       ==========  
-costly							            costly
-more time						            less time
-more size						             less size
-more resources					          less resources
-resources block					          dynamic resources allocation
-hypervisior						            no need of extra components                 
-not protable                    portable
-more security                   less security 
+• Hypervisor = software that creates and manages VMs.  
+• VM logically divides physical hardware into multiple virtual servers.  
+• Guest OS can be Ubuntu, Windows, RedHat, CentOS, etc.  
+• Need to install, configure, and manage the hypervisor.  
+• Hypervisor management can be difficult.  
+• Each VM has its own OS, so it uses more CPU, RAM, and storage.  
+• Resource consumption is higher compared to containers.  
 
+---
+
+## Containers / Docker
+
+Physical Server → Hardware → Host OS → Docker Engine → Containers  
+
+• Containers provide only what is required to run the application.  
+* container/image ---> (bare min OS )+ system packages + application code and dependies  
+* Docker Engine is the software that creates and manages containers.  
+* Containers run your applications.  
+• Containers are lightweight and take very less storage and memory.  
+• Containers share the Host OS kernel.  
+• No separate Guest OS is required.  
+* it cannot block the resource utilization  
+
+---
+
+## VM vs Containers
+
+costly                     costly  
+more time                  less time  
+more size                  less size  
+more resources             less resources  
+resources block            dynamic resources allocation  
+hypervisior                no need of extra components  
+not protable               portable  
+more security              less security  
+
+---
 
 ## Docker installation
 
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo dnf -y install dnf-plugins-core  
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo  
 
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin  
 
-sudo systemctl start docker
-sudo systemctl enable  docker
-sudo systemctl status  docker
+sudo systemctl start docker  
+sudo systemctl enable docker  
+sudo systemctl status docker  
 
-docker ps ---permission denied
-# It will work only for root not for normal user but  we can't take root for docker
+docker ps ---permission denied  
 
-add your normal group to docker group
+add your normal group to docker group  
 
-sudo usermod -aG docker ec2-user
-then
-exit 
-docker ps --- It gives running containers
+sudo usermod -aG docker ec2-user  
 
-AMI ---> OS + configuration(system packages + app runtime + app librairies )
-image ---> bare min os + system packages + app runtime + app librairies
+exit  
 
-when you run AMI it is called server, server is running instance of AMI
-AMI → Launch/Run → EC2 Instance (Server)
+docker ps --- It gives running containers  
 
-container is running instance of image (image ---> run ---> container)
-When you run an image, it creates a running container.
-Docker Image → Run → Container
+---
 
-docker images
--------------
- It will show images that avaliable in system
- It is read only template used to craete conatiners
+AMI ---> OS + configuration(system packages + app runtime + app librairies )  
+image ---> bare min os + system packages + app runtime + app librairies  
+
+AMI → Launch/Run → EC2 Instance (Server)  
+
+Docker Image → Run → Container  
+
+---
+
+## docker images
+
+docker images  
+It will show images that avaliable in system  
+It is read only template used to craete conatiners  
 
 docker pull <image_name>:<tag/version> ---To get/download the image
 docker pull <image_name> --> It will take latest image
@@ -209,258 +236,110 @@ docker create    ---> to create container
 docker ps -a ----> It will all containsers including all status 
 docker ps ---> running conatiner
 # start the container
-docker start <container_id> 
+docker start <container_id>
 docker ps 
 # to remove container
 docker rm -f <container_ID>
 
-# to remove image , if we remove image container also removed
-docker rmi  nginx
-# instead of create container, pull image ,start container we can use
-docker run <image>:<tag> ---> But it block the terminal, It is foreground
-docker run -d <image> ---> To dettaching the output to the screen, It will run in the background. 
-everytime we are running docker run command it will create conatiners
+docker rmi nginx  
 
-# here nginx is running how we can access
-we can get using ports  
-# docker diagram
-conatiner is like a mini sever
-0 to 
-docker run -d -p 80:80 <image>
-# we cannot use same local port again
-# to see the conatiner id's
-docker ps -a -q
-# to remove the CID 
-docker rm -f `docker ps -a -q`
+docker run <image>:<tag>  
+docker run -d <image>  
 
+docker run -d -p 80:80 <image>  
 
-# docker gave random names while creating the conatiner. we want to give required name
-docker run -d -p 80:80 --name nginx nginx
+docker ps -a -q  
+docker rm -f `docker ps -a -q`  
 
---name: nginx ----> name of the conatiner
-nginx ---> nginx conainer
-# here name is unique
+docker run -d -p 80:80 --name nginx nginx  
 
-# how to login into container
-docker exec -it nginx bash
--it --> interactive terminal
-# checking the nginx configuration
-cat /etc/nginx/nginx.conf
-# to check container IP(server-check)
-docker inspect nginx
-# to check docker
-docker inspect conatiner-name/CID
-# too see the logs
-docker logs nmginx
+docker exec -it nginx bash  
 
-## How we can create custom images
-===============================
+cat /etc/nginx/nginx.conf  
 
-Dockerfile ---> a set of instructions to create customised images
+docker inspect nginx  
 
-# 1st we need base image
-FROM:
-======
-FROM almalinux:9
-from represents the base OS
-docker build -t from:v1 . ---> current directory has docker file
--t ---> tag  
+docker logs nmginx  
 
-docker images
-docker pull alpine ---> It gives very base min os 
-# configure the image and install dependies
-RUN:
-=====
-* RUN is a instruction used to execute commands inside the image while building it.
-* It is mainly used to:
-    Install packages
-    Set up dependencies
-    Configure the environment
+---
 
-RUN executes at the time of image building, not when the container runs.
-we can have multiple run commands beacuse we will install lot of packages
-docker build -t run:v1 .
-Execution Time === During docker build
-# nginx run 
-systemctl start nginx ---> It will run service files ---> etc/systemd/system/nginx.service
-it command will execute 
-CMD ["nginx", "-g", "daemon off";]
-cmd---> run this command when container starts
+## Dockerfile
 
--g ---> means set the configuration directories
+FROM  
+RUN  
+CMD  
+COPY  
+ADD  
+LABEL  
+EXPOSE  
+ENV  
+ENTRYPOINT  
+WORKDIR  
+ARG  
+ONBUILD  
 
-normall process
-----------------
-Start nginx
-↓
-Run in background (daemon mode)
-docker process
---------------
-daemon off;
-↓
-Do NOT run in background
-↓
-Stay in foreground
+---
 
+## RUN
 
-# what happen if i remove run:v1 in the file
+used to execute commands during image build  
 
-docker rmi -f run:v1
-docker images
-docker build -t cmd:v1 
-docker images.
-here we gave base image is run:v1 but here we can't see image for that the it will docker hub
+---
 
-docker pull nginx ---> first it will check in locally is there any nginx image, if doesn't exstis it will check in docker hub
-we will get error 
-then go to run floder
-docker build -t run:v1 .
-docker images
-CMD:
-=====
-It will run/executes at the time of container creation
-i.e at the time of docker run
-then
-docker run -d cmd:v1
-docker ps
-but we cannot have multiple CMD commands. CMD should be only instrcution inside docker file
-If multiple CMD instructions are present, the last one overrides the previous ones.
-Execution Time = During docker run
+## CMD
 
-COPY:
-======
-It will copy files and directories from the local machine into the Docker image.
-Copies files exactly as they are.
-Local Machine --> Docker Image --> Container
-The files are copied during image build, not during container creation.
+runs when container starts  
 
-deamon off ---> run the deamon on background 
-docker build -t copy:v1 .
-docker ps
-docker rm -f `docker ps -a -q `
-docker run -d -p 80:80 --name copy nginx
+---
 
-ADD:
-======
-COPY and ADD are used to add files and directories into a Docker image.
-ADD can do everything that COPY does, but it has two additional capabilities:
-1. It can fetch files directly from a URL.
-2. It can directly untar (extract) tar files into the Docker image.
-docker rm -f copy
-docker build -t add:v1 
-docker run -d -p 80:80 --name add add:v1 
+## COPY
 
-* here it will download the file but it can directly give the read acess no we need to do that
-docker rm -f add
-docker build -t add:v1 
-docker run -d -p 80:80 --name add add:v1 
-# to see the content
-docker exec -it add bash
-cd /usr/share/nginx/html
+copies files from local to image  
 
-----------------------------------------
-----------------------------------------
-df -hT ---> here we are increasing /var
-/var/lib/docker ---> here containers are stored/ home directory 
-* imges count is increased then memory usage alos increased
-* so here we need to increase the /var floder size
+---
 
-LABLE:
-======
-it is like a tag it can conatin key values pairs. 
-It can used at the time of fliteration
-ex: we have multiple images so we want filter using lables 
-docker images  --filter label=COURSE="devops"
-# how can you push the images to docker hub
-log into dockerhub:
+## ADD
 
-docker login -u lakshmi1092
-docker push URL/username/imagename:version
-docker push label
+same as COPY + url + unzip  
 
-it will give an error. for this we need to retag the lables
-docker tag label:v1 lakshmi1092/label:v1 ---> 1st adding the tags then push
-docker push lakshmi1092/label:v1
+---
 
-EXPOSE:
-=======
-It can be used for users to see the which port is open. 
-This for doc purpose not for any funcxtionlity
-docker build -t lakshmi1092/expose:v1 .
-docker inspect lakshmi1092/expose:v1 ---> to check ports
-docker push lakshmi1092/expose:v1
---- her if we give run in the from command 1st it will check local so we can directly give
-lakshmi1092/run:v1
-docker push lakshmi1092/expose:v1 --- to push the image
+## LABEL
 
-ENV:
-=====
-this variables are accesable inside contaier
-docker build -t lakshmi1092/env:v1 .
-docker run -d lakshmi1092/env:v1
-docker ps -a
-It is exited beacause we haven't give any command to run
-here i cannot use daemon beacuse we are not installling nginx instead i will give 
-CMD ["sleep","1000"]
-# to login into container
-docker exec -it <container_id> bash
-env ---> it will show envi variables
+key value metadata  
 
-ENTYPOINT:
-===========
- docker build -t entry:v1 .
-docker run entry:v1
-it continously running on foreground
-docker ps -a 
-we can overrides the CMD instrcutions 
-we can't override the entrypoint instrcutions, if we try it will over rides 
-docker run entry:v1 ping facebook.com
-# to see th erros/full info
-docker ps -a --no-trunc
-"ping google.com ping facebook.com"  ---o/p for entrypont
+---
 
- we can use combination of CMD and entrypoint for better results, Entrypoint will have command. default args can be suppied by CMD
- you can also overrides the default args throught the command line
- docker exec -it <container_id> bash ----> login we are getting root acess
- does containser have separate storage or it will use host storage ??
- it uses whatever the host it uss the host storage
- - if we give root acess to conainer it will block entire storage
-user ----> for this we need to craete a user and use that user
+## EXPOSE
 
-WORKDIR:
-===========
-docker build -t workdir:v1 . 
-docker build -t workdir:v1 --no-cache --progress=plain . --> for human reable
-docker run -d workdir:v1
-docker exec -it <CID> bash
+for documentation of ports  
 
-ARGS:
-======
-It is like a env variable it contain key value pairs
-docker build -t arg:v1 . --progress=plain --no-cache
-here are we can able to acess the argfs and variables
-docker run -d arg:v1
-docker exec -it aa bash
-env
-Here we are not get the args .ARG is a build time variable
-they can't be accsesed inside the containers.
-ENV can be acessed build time and inside container also
+---
 
-# we can override also
-docker build -t arg:v1 . --progress=plain --no-cache --build-arg trainer=lakshmi
-arg instrcution variables can be overriden
+## ENV
 
-In an exceptional case ARG can bethe 1st instrcution to supply version to base OS in FROM 
-you can't use that version after from instrcution
-# how we can acess args inside container
-ARG duration="200 hrs"
-ENV duration=$duration
+environment variables  
 
-ONBUILD:
-========
-while developing images you can put some conditions while others are using your images
-ONBUILD will run if any other persons using the my image
-docker build -t onbuild-test:v1 --progress=plain --no-cache .
-docker run -d -p 80:80 onbuild-test:v1
-<ip public ip> in browser
+---
 
+## ENTRYPOINT
+
+fixed command  
+
+---
+
+## WORKDIR
+
+working directory  
+
+---
+
+## ARG
+
+build time variables  
+
+---
+
+## ONBUILD
+
+triggers when used by another image  
